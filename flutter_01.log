@@ -1,0 +1,95 @@
+Flutter crash report.
+Please report a bug at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter run --machine --start-paused -d 192.168.29.242:5555 --devtools-server-address http://127.0.0.1:9100/ --target lib\main.dart
+
+## exception
+
+OutOfMemoryError: Out of Memory
+
+```
+#0      new Uint8List (dart:typed_data-patch/typed_data_patch.dart:2221:3)
+#1      Uint8Buffer._createBuffer (package:typed_data/src/typed_buffer.dart:328:40)
+#2      TypedDataBuffer._createBiggerBuffer (package:typed_data/src/typed_buffer.dart:259:12)
+#3      TypedDataBuffer._ensureCapacity (package:typed_data/src/typed_buffer.dart:241:21)
+#4      TypedDataBuffer._insertKnownLength (package:typed_data/src/typed_buffer.dart:209:5)
+#5      TypedDataBuffer._addAll (package:typed_data/src/typed_buffer.dart:186:7)
+#6      TypedDataBuffer.addAll (package:typed_data/src/typed_buffer.dart:91:5)
+#7      HashSink.add (package:crypto/src/hash_sink.dart:79:18)
+#8      _ByteAdapterSink.add (dart:convert/byte_conversion.dart:58:11)
+#9      Hash.convert (package:crypto/src/hash.dart:28:15)
+#10     _calculateSha (package:flutter_tools/src/android/gradle.dart:760:20)
+#11     AndroidGradleBuilder.buildGradleApp (package:flutter_tools/src/android/gradle.dart:489:34)
+#12     _rootRunUnary (dart:async/zone.dart:1434:47)
+#13     _CustomZone.runUnary (dart:async/zone.dart:1335:19)
+#14     _FutureListener.handleValue (dart:async/future_impl.dart:147:18)
+#15     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:766:45)
+#16     Future._propagateToListeners (dart:async/future_impl.dart:795:13)
+#17     Future._completeWithValue (dart:async/future_impl.dart:566:5)
+#18     Future._asyncCompleteWithValue.<anonymous closure> (dart:async/future_impl.dart:639:7)
+#19     _rootRun (dart:async/zone.dart:1426:13)
+#20     _CustomZone.run (dart:async/zone.dart:1328:19)
+#21     _CustomZone.runGuarded (dart:async/zone.dart:1236:7)
+#22     _CustomZone.bindCallbackGuarded.<anonymous closure> (dart:async/zone.dart:1276:23)
+#23     _microtaskLoop (dart:async/schedule_microtask.dart:40:21)
+#24     _startMicrotaskLoop (dart:async/schedule_microtask.dart:49:5)
+#25     _runPendingImmediateCallback (dart:isolate-patch/isolate_patch.dart:122:13)
+#26     _RawReceivePortImpl._handleMessage (dart:isolate-patch/isolate_patch.dart:193:5)
+```
+
+## flutter doctor
+
+```
+[✓] Flutter (Channel stable, 3.0.2, on Microsoft Windows [Version 10.0.22000.795], locale en-IN)
+    • Flutter version 3.0.2 at C:\flutter_windows_3.0.1-stable\flutter
+    • Upstream repository https://github.com/flutter/flutter.git
+    • Framework revision cd41fdd495 (6 weeks ago), 2022-06-08 09:52:13 -0700
+    • Engine revision f15f824b57
+    • Dart version 2.17.3
+    • DevTools version 2.12.2
+
+[✓] Android toolchain - develop for Android devices (Android SDK version 33.0.0-rc3)
+    • Android SDK at C:\Users\jeyas\AppData\Local\Android\sdk
+    • Platform android-32, build-tools 33.0.0-rc3
+    • Java binary at: C:\Program Files\Android\Android Studio\jre\bin\java
+    • Java version OpenJDK Runtime Environment (build 11.0.8+10-b944.6842174)
+    • All Android licenses accepted.
+
+[✓] Chrome - develop for the web
+    • Chrome at C:\Program Files\Google\Chrome\Application\chrome.exe
+
+[✓] Visual Studio - develop for Windows (Visual Studio Build Tools 2019 16.11.13)
+    • Visual Studio at C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools
+    • Visual Studio Build Tools 2019 version 16.11.32413.511
+    • Windows 10 SDK version 10.0.17763.0
+
+[✓] Android Studio (version 4.2)
+    • Android Studio at C:\Program Files\Android\Android Studio
+    • Flutter plugin can be installed from:
+      🔨 https://plugins.jetbrains.com/plugin/9212-flutter
+    • Dart plugin can be installed from:
+      🔨 https://plugins.jetbrains.com/plugin/6351-dart
+    • Java version OpenJDK Runtime Environment (build 11.0.8+10-b944.6842174)
+
+[✓] VS Code (version 1.69.2)
+    • VS Code at C:\Users\jeyas\AppData\Local\Programs\Microsoft VS Code
+    • Flutter extension version 3.44.0
+
+[✓] VS Code (version 1.57.0-insider)
+    • VS Code at C:\Users\jeyas\AppData\Local\Programs\Microsoft VS Code Insiders
+    • Flutter extension can be installed from:
+      🔨 https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter
+
+[✓] Connected device (4 available)
+    • RMX3231 (mobile)  • 192.168.29.242:5555 • android-arm    • Android 11 (API 30)
+    • Windows (desktop) • windows             • windows-x64    • Microsoft Windows [Version 10.0.22000.795]
+    • Chrome (web)      • chrome              • web-javascript • Google Chrome 103.0.5060.114
+    • Edge (web)        • edge                • web-javascript • Microsoft Edge 103.0.1264.62
+
+[✓] HTTP Host Availability
+    • All required HTTP hosts are available
+
+• No issues found!
+```
