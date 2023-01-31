@@ -1,11 +1,11 @@
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter/material.dart';
 import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badges;
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../Controllers/CartController.dart';
 import '../../screens/CartScreen.dart';
-import '../../utils/constants.dart';
 import '../Controllers/SearchController.dart';
 
 class CoursesAppBarActions {
@@ -16,24 +16,26 @@ class CoursesAppBarActions {
         ? Container()
         : GestureDetector(
             onTap: () {
-              Get.to(BuyNowScreen(_cartController.cart_items as dynamic, "Your Cart"));
+              Get.to(BuyNowScreen(
+                  _cartController.cart_items as dynamic, "Your Cart"));
             },
             child: Container(
               height: 55.h,
-              padding: EdgeInsets.fromLTRB(0, 0, 20.h, 0),
-              child: Badge(
-                badgeContent: Obx(() =>
-                    Text(_cartController.cart_count.value.toString(), style: const TextStyle(color: Colors.white))),
+              padding: EdgeInsets.fromLTRB(0, 15, 20.h, 0),
+              child: badges.Badge(
+                badgeContent: Obx(() => Text(
+                    _cartController.cart_count.value.toString(),
+                    style: const TextStyle(color: Colors.white))),
                 child: Icon(
                   Icons.shopping_cart,
                   color: widget_color,
                   size: 30,
                 ),
-                toAnimate: true,
-                shape: BadgeShape.circle,
-                badgeColor: Constants.primary_color,
-                borderRadius: BorderRadius.circular(8.r),
-                position: BadgePosition.topEnd(top: 0, end: -5),
+                badgeStyle: badges.BadgeStyle(
+                    shape: BadgeShape.circle,
+                    badgeColor: Colors.red,
+                    borderRadius: BorderRadius.circular(8.r)),
+                position: BadgePosition.topEnd(top: 5, end: -5),
               ),
             ),
           );
@@ -42,7 +44,8 @@ class CoursesAppBarActions {
   Widget search() {
     return IconButton(
         onPressed: () {
-          _searchController.gotoCategory({"id": 0, "name": "All Categories".tr}, openSearch: true);
+          _searchController.gotoCategory({"id": 0, "name": "All Categories".tr},
+              openSearch: true);
         },
         icon: const Icon(
           Icons.search,

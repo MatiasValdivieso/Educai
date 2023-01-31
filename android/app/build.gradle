@@ -32,7 +32,7 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 33
     buildToolsVersion "21.0.1"
 
     compileOptions {
@@ -57,6 +57,7 @@ android {
         versionName flutterVersionName
         multiDexEnabled true
     }
+/*
     signingConfigs {
         release {
             keyAlias keystoreProperties['keyAlias']
@@ -64,10 +65,10 @@ android {
             storeFile file(keystoreProperties['storeFile'])
             storePassword keystoreProperties['storePassword']
         }
-    }
+    }*/
     buildTypes {
         release {
-            signingConfig signingConfigs.release
+            //signingConfig signingConfigs.release
             shrinkResources false 
             minifyEnabled false
         }

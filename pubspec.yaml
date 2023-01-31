@@ -99,7 +99,7 @@ dependencies:
   firebase_in_app_messaging: ^0.6.0+19
 
   #UI
-  badges: ^2.0.2
+  badges: ^3.0.2
   percent_indicator: ^4.0.0
   material_floating_search_bar: ^0.3.7
   flutter_rating_bar: ^4.0.0
@@ -109,6 +109,7 @@ dependencies:
   
 dependency_overrides:
   image_picker_android: 0.8.4+13
+  firebase_core_platform_interface: 4.5.1
 
 dev_dependencies:
   flutter_test:

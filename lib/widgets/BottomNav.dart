@@ -1,6 +1,6 @@
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
@@ -42,7 +42,7 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
       inactiveColorPrimary: CupertinoColors.systemGrey,
     ),
     PersistentBottomNavBarItem(
-      icon: const Icon(Icons.favorite_border),
+      icon: const Icon(Icons.bookmark_border_outlined),
       title: ("Wishlists".tr),
       activeColorPrimary: Constants.primary_color,
       inactiveColorPrimary: CupertinoColors.systemGrey,
@@ -58,7 +58,8 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
 
 // ignore: must_be_immutable
 class BottomNav extends StatelessWidget {
-  PersistentTabController TabBarController = Get.put(PersistentTabController(initialIndex: 0));
+  PersistentTabController TabBarController =
+      Get.put(PersistentTabController(initialIndex: 0));
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
@@ -91,7 +92,8 @@ class BottomNav extends StatelessWidget {
         curve: Curves.ease,
         duration: Duration(milliseconds: 200),
       ),
-      navBarStyle: NavBarStyle.style6, // Choose the nav bar style with this property.
+      navBarStyle:
+          NavBarStyle.style6, // Choose the nav bar style with this property.
     );
   }
 }

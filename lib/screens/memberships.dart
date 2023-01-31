@@ -1,22 +1,22 @@
 import 'dart:convert';
-import 'package:LearnGun/Controllers/HomeController.dart';
-import 'package:LearnGun/services/CoursesAPI.dart';
-import 'package:LearnGun/services/SharedPrefs.dart';
-import 'package:LearnGun/widgets/Notify/notify.dart';
-import 'package:flutter_stripe/flutter_stripe.dart' as stripe;
-import 'package:http/http.dart' as http;
 
+import 'package:LearnGun/Controllers/HomeController.dart';
 import 'package:LearnGun/Controllers/MembershipController.dart';
 import 'package:LearnGun/Models/Membership.dart';
+import 'package:LearnGun/services/CoursesAPI.dart';
+import 'package:LearnGun/services/SharedPrefs.dart';
 import 'package:LearnGun/services/membershipsApi.dart';
 import 'package:LearnGun/utils/constants.dart';
 import 'package:LearnGun/widgets/Button.dart';
 import 'package:LearnGun/widgets/Card.dart';
+import 'package:LearnGun/widgets/Notify/notify.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_stripe/flutter_stripe.dart' as stripe;
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:in_app_purchase_android/in_app_purchase_android.dart';
 import 'package:intl/intl.dart';
@@ -93,7 +93,6 @@ class _membershipsScreenState extends State<membershipsScreen> {
         children: [
           Obx(() {
             if (_membershipController.membership.toString() != "{}") {
-              
               var membership;
               if ((_membershipController.membership)["membership"] != false) {
                 membership = Membershipbean.fromJson(
@@ -219,7 +218,7 @@ class _membershipsScreenState extends State<membershipsScreen> {
                     ${plan.description}
                     """, style: {
                           "body": Style(
-                            margin: EdgeInsets.zero,
+                            //margin: EdgeInsets.zero,
                             padding: EdgeInsets.zero,
                           ),
                           "h1": Style(color: Colors.white),
@@ -442,7 +441,6 @@ class _membershipsScreenState extends State<membershipsScreen> {
         _membershipController.getMembership();
         Get.put(HomeController()).courseslist.value =
             await CoursesApi().GetCourses({});
-
       }).onError((error, stackTrace) {});
     } on stripe.StripeException {
       showDialog(
@@ -450,8 +448,7 @@ class _membershipsScreenState extends State<membershipsScreen> {
           builder: (_) => const AlertDialog(
                 content: Text("Cancelled "),
               ));
-    } catch (e) {
-    }
+    } catch (e) {}
   }
 
   Widget payment_method(String name) {
@@ -517,7 +514,6 @@ class _membershipsScreenState extends State<membershipsScreen> {
             _membershipController.getMembership();
             Get.put(HomeController()).courseslist.value =
                 await CoursesApi().GetCourses({});
-
           } else {}
         }
         if (purchaseDetails.pendingCompletePurchase) {

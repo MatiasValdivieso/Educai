@@ -1,37 +1,38 @@
+import 'dart:convert';
+
 import 'package:LearnGun/screens/memberships.dart';
 import 'package:LearnGun/screens/register.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:share_plus/share_plus.dart';
-import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:extended_image/extended_image.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../widgets/HtmlWidget.dart';
-import '../../widgets/Notify/notify.dart';
-import '../../Controllers/MyCoursesController.dart';
-import '../../Controllers/HomeController.dart';
-import '../../widgets/custom_expansion_tile.dart';
-import '../../Controllers/CoursesController.dart';
-import '../../widgets/Card.dart';
-import '../../utils/MeasureSize.dart';
 import '../../Controllers/CartController.dart';
+import '../../Controllers/CoursesController.dart';
+import '../../Controllers/HomeController.dart';
+import '../../Controllers/MyCoursesController.dart';
+import '../../Controllers/Previewcontroller.dart';
+import '../../Controllers/SearchController.dart';
 import '../../Models/Courses.dart';
+import '../../Models/Reviews.dart';
+import '../../services/CoursesAPI.dart';
+import '../../utils/MeasureSize.dart';
 import '../../utils/constants.dart';
 import '../../widgets/Button.dart';
-import '../../services/CoursesAPI.dart';
+import '../../widgets/Card.dart';
 import '../../widgets/CoursesAppBarActions.dart';
+import '../../widgets/HtmlWidget.dart';
+import '../../widgets/Notify/notify.dart';
+import '../../widgets/custom_expansion_tile.dart';
 import '../../widgets/grids/grid3.dart';
+import '../../widgets/preview.dart';
 import '../Controllers/TakeCourseController.dart';
 import 'CartScreen.dart';
-import '../../Controllers/SearchController.dart';
-import '../../widgets/preview.dart';
-import '../../Controllers/Previewcontroller.dart';
-import '../../Models/Reviews.dart';
 
 class CurriculumScreen extends StatefulWidget {
   final dynamic Course;
@@ -77,9 +78,9 @@ class _CurriculumScreenState extends State<CurriculumScreen> {
             appBar: AppBar(
               actions: [
                 IconButton(
-                  icon: Icon(Icons.favorite,
+                  icon: Icon(Icons.bookmark,
                       color: (_coursesController.isInWishlist(widget.Course)
-                          ? Colors.red
+                          ? Colors.lightBlueAccent
                           : Colors.white)),
                   onPressed: () {
                     _coursesController.changeWishlist(widget.Course);
@@ -873,14 +874,17 @@ class _CurriculumScreenState extends State<CurriculumScreen> {
               ? FaIcon(icon, color: Constants.primary_color)
               : Icon(icon, color: Constants.primary_color),
           SizedBox(width: 8.w),
-          Text(title,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp)),
-          const Spacer(),
-          Text(text,
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: (title == "Price".tr) ? Colors.red : Colors.grey,
-                  fontSize: 16.sp)),
+          Column(children: [
+            Text(title,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp)),
+            // const Spacer(),
+
+            Text(text,
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: (title == "Price".tr) ? Colors.red : Colors.grey,
+                    fontSize: 16.sp)),
+          ])
         ]));
   }
 
