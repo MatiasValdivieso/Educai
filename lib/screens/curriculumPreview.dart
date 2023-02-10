@@ -361,7 +361,7 @@ class _CurriculumScreenState extends State<CurriculumScreen> {
                                   if (widget.Course.price == 0 &&
                                       widget.Course.course_data.status == "")
                                     SizedBox(
-                                      width: Get.width * 1 - (20.w),
+                                      width: Get.width * 0.99 - (20.w),
                                       child: Center(
                                         child: theme_buttons.material_button(
                                             "Enroll Now".tr, 0.6,
@@ -435,7 +435,7 @@ class _CurriculumScreenState extends State<CurriculumScreen> {
                                       widget.Course.course_data.graduation ==
                                           "in-progress")
                                     SizedBox(
-                                        width: Get.width - (20.w),
+                                        width: Get.width - (25.w),
                                         child: Center(
                                             child: theme_buttons
                                                 .material_button(
@@ -859,6 +859,7 @@ class _CurriculumScreenState extends State<CurriculumScreen> {
         padding: EdgeInsets.fromLTRB(25.w, 10.h, 25.w, 0), child: childWidgets);
   }
 
+//aca es lo de la desacripcion de antes de comprar
   static Widget single_detail(var icon, String title, String text,
       {showDivider = true, isFA = false}) {
     return Container(
@@ -868,22 +869,25 @@ class _CurriculumScreenState extends State<CurriculumScreen> {
                     color:
                         (showDivider) ? const Color(0xffD3D3D3) : Colors.white,
                     width: 1.w))),
-        padding: EdgeInsets.fromLTRB(20.w, 13.h, 20.w, 13.h),
+        padding: EdgeInsets.fromLTRB(20.w, 13.h, 10.w, 13.h),
         child: Row(children: [
           (isFA)
               ? FaIcon(icon, color: Constants.primary_color)
               : Icon(icon, color: Constants.primary_color),
-          SizedBox(width: 8.w),
+          SizedBox(width: 10.w),
           Column(children: [
             Text(title,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp)),
             // const Spacer(),
 
-            Text(text,
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: (title == "Price".tr) ? Colors.red : Colors.grey,
-                    fontSize: 16.sp)),
+            Container(
+              child: Text(text,
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: (title == "Price".tr) ? Colors.red : Colors.grey,
+                      fontSize: 16.sp)),
+            )
           ])
         ]));
   }

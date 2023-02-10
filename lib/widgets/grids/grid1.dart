@@ -1,11 +1,11 @@
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
-import '../../Models/Courses.dart';
 import '../../Controllers/CoursesController.dart';
+import '../../Models/Courses.dart';
 import '../../screens/Coursesloading.dart';
 
 class BuildGrid1 extends StatelessWidget {
@@ -66,7 +66,8 @@ class BuildGrid1 extends StatelessWidget {
                         const Icon(Icons.delete_outline, color: Colors.red),
                         Text(
                           "Remove".tr,
-                          style: const TextStyle(color: Colors.red, fontWeight: FontWeight.w600),
+                          style: const TextStyle(
+                              color: Colors.red, fontWeight: FontWeight.w600),
                         )
                       ],
                     ),
@@ -85,7 +86,8 @@ class BuildGrid1 extends StatelessWidget {
 
   static Widget buildRating(num Rating) {
     return Row(children: [
-      Text(Rating.toString(), style: const TextStyle(fontWeight: FontWeight.bold)),
+      Text(Rating.toString(),
+          style: const TextStyle(fontWeight: FontWeight.bold)),
       SizedBox(width: 3.w),
       RatingBarIndicator(
         rating: Rating.toDouble(),

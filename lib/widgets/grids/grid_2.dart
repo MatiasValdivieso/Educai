@@ -9,6 +9,7 @@ import '../../Controllers/CoursesController.dart';
 import '../../Models/Courses.dart';
 import '../../screens/curriculumPreview.dart';
 import '../../utils/constants.dart';
+//esta clase  es para las cratas que aparecen en la home del curso
 
 class BuildGrid2 extends StatelessWidget {
   final coursesController _coursesController = Get.put(coursesController());
@@ -114,8 +115,10 @@ class BuildGrid2 extends StatelessWidget {
                               children: [
                                 Row(
                                   children: [
-                                    const Icon(Icons.people,
-                                        color: Colors.grey),
+                                    const Icon(
+                                      Icons.people,
+                                      color: Colors.grey,
+                                    ),
                                     SizedBox(
                                       width: 5.w,
                                     ),
@@ -136,6 +139,7 @@ class BuildGrid2 extends StatelessWidget {
                                       _coursesController
                                           .get_lessons_count(course)
                                           .toString(),
+                                      textAlign: TextAlign.left,
                                       style:
                                           const TextStyle(color: Colors.grey),
                                     ),
@@ -149,6 +153,7 @@ class BuildGrid2 extends StatelessWidget {
                                     : Text(
                                         Constants.currency +
                                             course.price.toString(),
+                                        textAlign: TextAlign.left,
                                         style: TextStyle(
                                             fontSize: 18.sp,
                                             fontWeight: FontWeight.bold)),

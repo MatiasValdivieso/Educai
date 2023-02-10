@@ -1,5 +1,5 @@
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../utils/constants.dart';
@@ -20,7 +20,8 @@ class notify {
     );
   }
 
-  static showDialog(String Title, String Message, {var confirm_text, var cancel_text, var on_confirm}) {
+  static showDialog(String Title, String Message,
+      {var confirm_text, var cancel_text, var on_confirm}) {
     Get.defaultDialog(
         title: Title,
         middleText: Message,
@@ -57,7 +58,8 @@ class notify {
                     ),
                     Text(
                       text,
-                      style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500),
+                      style: TextStyle(
+                          fontSize: 15.sp, fontWeight: FontWeight.w500),
                     )
                   ],
                 ),

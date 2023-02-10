@@ -1,5 +1,5 @@
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../utils/constants.dart';
@@ -11,10 +11,13 @@ class theme_buttons {
     return SizedBox(
         width: Get.width * width,
         child: MaterialButton(
-            color: (background_color == null) ? Constants.primary_color : background_color,
+            color: (background_color == null)
+                ? Constants.primary_color
+                : background_color,
             textColor: (textColor == null) ? Colors.white : textColor,
-            padding: EdgeInsets.only(top: 10.h, bottom: 10.h),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+            padding: EdgeInsets.only(top: 10.h, bottom: 10.h, right: -20),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.r)),
             onPressed: () async {
               onTap();
             },
@@ -45,8 +48,10 @@ class theme_buttons {
   static TagsButton(String Title, {onTap}) {
     return TextButton(
       style: ButtonStyle(
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18.0.r), side: const BorderSide(color: Colors.black)))),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(18.0.r),
+                  side: const BorderSide(color: Colors.black)))),
       child: Text(
         Title,
         style: TextStyle(color: Colors.black, fontSize: 15.sp),
@@ -64,9 +69,11 @@ class theme_buttons {
       },
       style: OutlinedButton.styleFrom(
         side: BorderSide(width: 1.w, color: Colors.white),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40.r)),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(40.r)),
       ),
-      child: Text(Title, style: TextStyle(color: Colors.white, fontSize: 16.sp)),
+      child:
+          Text(Title, style: TextStyle(color: Colors.white, fontSize: 16.sp)),
     );
   }
 }

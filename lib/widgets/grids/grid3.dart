@@ -1,14 +1,15 @@
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:get/get.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../../Controllers/CoursesController.dart';
 import '../../Models/Courses.dart';
 import '../../screens/curriculumPreview.dart';
 import '../../utils/constants.dart';
 
+// esta es la lisat de cartas que aparece en cursos relacionados
 // ignore: must_be_immutable
 class BuildGrid3 extends StatelessWidget {
   final Courses course;
@@ -19,8 +20,8 @@ class BuildGrid3 extends StatelessWidget {
     return GestureDetector(
         onTap: () {
           if (push_replace) {
-            Navigator.of(context)
-                .pushReplacement(MaterialPageRoute(builder: (context) => CurriculumScreen(Course: course)));
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) => CurriculumScreen(Course: course)));
           } else {
             Get.to(CurriculumScreen(Course: course));
           }
@@ -50,7 +51,10 @@ class BuildGrid3 extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(course.name, maxLines: 2, style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16.sp)),
+                      Text(course.name,
+                          maxLines: 2,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500, fontSize: 16.sp)),
                       SizedBox(
                         height: 5.h,
                       ),
@@ -72,7 +76,9 @@ class BuildGrid3 extends StatelessWidget {
                             width: 5.w,
                           ),
                           Text(
-                            coursesController().get_lessons_count(course).toString(),
+                            coursesController()
+                                .get_lessons_count(course)
+                                .toString(),
                             style: TextStyle(color: Constants.primary_color),
                           ),
                         ],
@@ -85,9 +91,13 @@ class BuildGrid3 extends StatelessWidget {
                         height: 5.h,
                       ),
                       (course.price == 0)
-                          ? Text("Free".tr, style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold))
+                          ? Text("Free".tr,
+                              style: TextStyle(
+                                  fontSize: 18.sp, fontWeight: FontWeight.bold))
                           : Text(Constants.currency + course.price.toString(),
-                              style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold)),
+                              style: TextStyle(
+                                  fontSize: 18.sp,
+                                  fontWeight: FontWeight.bold)),
                     ],
                   ),
                 ))
@@ -97,7 +107,8 @@ class BuildGrid3 extends StatelessWidget {
 
   static Widget buildRating(num Rating) {
     return Row(children: [
-      Text(Rating.toString(), style: const TextStyle(fontWeight: FontWeight.bold)),
+      Text(Rating.toString(),
+          style: const TextStyle(fontWeight: FontWeight.bold)),
       SizedBox(width: 3.w),
       RatingBarIndicator(
         rating: Rating.toDouble(),

@@ -1,21 +1,22 @@
 import 'dart:async';
-
-import 'package:LearnGun/widgets/Notify/notify.dart';
-import 'package:flutter/services.dart';
 import 'dart:io';
 import 'dart:math';
+
+import 'package:LearnGun/widgets/Notify/notify.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:uni_links/uni_links.dart';
+
 import '../../services/SettingsAPI.dart';
+import '../../services/SharedPrefs.dart';
+import '../../utils/constants.dart';
 import '../../widgets/BottomNav.dart';
 import '../services/CoursesAPI.dart';
 import 'MyCourses.dart';
-import '../../utils/constants.dart';
-import '../../services/SharedPrefs.dart';
 import 'curriculumPreview.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -39,6 +40,7 @@ class _SplashScreenState extends State<SplashScreen>
   Future<void> initUniLinks() async {
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
+      print('hola');
       final initialLink = await getInitialLink();
       List<String> pathSeg = Uri.parse(initialLink ?? "").pathSegments;
       String slug =

@@ -10,17 +10,14 @@ class Constants {
   static List translationSwitch = [
     ["English", 'en'],
     ["French", "fr"],
-    ["Haitian Creole", "ht"],
     ["Español", "es"]
   ];
   static String currency = '\$';
-  static List payment_methods = [
-   "paypal",
-    "google_play"
-  ];
+  static List payment_methods = ["paypal", "google_play"];
   static bool cacheImages = true;
   static bool isProtected = true;
-  static String becomeInstructorURL = "https://www.educai.online/lp-become-a-teacher/";
+  static String becomeInstructorURL =
+      "https://www.educai.online/lp-become-a-teacher/";
   static List resourcesSection = ["blogs", "webinar", "others"];
   static bool enableMembership = true;
   //Google ads

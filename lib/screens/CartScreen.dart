@@ -1,26 +1,27 @@
 import 'dart:convert';
+
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:http/http.dart' as http;
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:in_app_purchase_android/in_app_purchase_android.dart';
-import 'package:http/http.dart' as http;
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
-import '../../widgets/NoData.dart';
 import '../../Controllers/CartController.dart';
 import '../../Controllers/CoursesController.dart';
-import '../../widgets/Card.dart';
-import '../../widgets/Button.dart';
 import '../../Models/Courses.dart';
 import '../../screens/Payments/PaypalPayment.dart';
+import '../../services/SharedPrefs.dart';
 import '../../utils/constants.dart';
+import '../../widgets/Button.dart';
+import '../../widgets/Card.dart';
+import '../../widgets/NoData.dart';
 import '../Controllers/HomeController.dart';
 import '../widgets/PleaseLogin.dart';
 import 'PaymentSuccess.dart';
-import '../../services/SharedPrefs.dart';
 import 'Payments/UPIPayment.dart';
 
 class BuyNowScreen extends StatefulWidget {
@@ -562,8 +563,7 @@ class _BuyNowScreenstate extends State<BuyNowScreen> {
           builder: (_) => const AlertDialog(
                 content: Text("Cancelled "),
               ));
-    } catch (e) {
-    }
+    } catch (e) {}
   }
 
   createPaymentIntent(var courses, String currency) async {

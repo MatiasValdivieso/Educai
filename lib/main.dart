@@ -1,21 +1,21 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
-import 'package:get/get.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_windowmanager/flutter_windowmanager.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:flutter_windowmanager/flutter_windowmanager.dart';
+import 'package:get/get.dart';
 
+import '../../screens/SplashScreen.dart';
 import '../../utils/Translations.dart';
 import '../../utils/constants.dart';
 import 'themes/AppTheme.dart';
-import '../../screens/SplashScreen.dart';
 
 var theme_data;
 Future<void> main() async {
@@ -40,13 +40,11 @@ Future<void> main() async {
     Stripe.publishableKey = Constants.stripePublishableKey;
     await Stripe.instance.applySettings();
   } finally {
-
     runApp(
       MyApp(),
     );
   }
 }
-
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();

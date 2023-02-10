@@ -1,25 +1,23 @@
-
-import 'package:LearnGun/screens/memberships.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:LearnGun/widgets/Button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:LearnGun/widgets/Button.dart';
 import '../../Controllers/HomeController.dart';
 import '../../Controllers/ProfileController.dart';
+import '../../screens/MyCourses.dart';
 import '../../screens/profile/MyOrders.dart';
+import '../../services/CoursesAPI.dart';
 import '../../services/ProfileAPI.dart';
-import '../../widgets/Card.dart';
 import '../../services/SharedPrefs.dart';
 import '../../utils/constants.dart';
+import '../../widgets/Card.dart';
+import '../../widgets/Notify/notify.dart';
 import '../../widgets/PleaseLogin.dart';
 import '../PaymentSuccess.dart';
 import 'EditProfile.dart';
-import '../../services/CoursesAPI.dart';
-import '../../widgets/Notify/notify.dart';
-import '../../screens/MyCourses.dart';
 
 class ProfileScreen extends StatefulWidget {
   static const routeName = '/profile';
@@ -78,12 +76,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       BuildProfile(snapshot.data.toString()),
                       BuildRows("Edit profile".tr, Icons.create_rounded,
                           EditProfile()),
-                      if (Constants.enableMembership)
+                      /*  if (Constants.enableMembership)
                         BuildRows(
                           "Membership Plans".tr,
                           Icons.bookmark,
                           membershipsScreen(),
-                        ),
+                        ),*/
                       BuildRows(
                           "My orders".tr, Icons.shopping_cart, MyOrders()),
                       BuildRows("Change Language".tr, Icons.language, null,
@@ -149,7 +147,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   bottom:
                       BorderSide(color: const Color(0xffD3D3D3), width: 2.w))),
           width: Get.width * 1.0,
-          padding: EdgeInsets.all(20.h),
+          padding: EdgeInsets.all(19.h),
           margin: EdgeInsets.fromLTRB(15.w, 0, 15.w, 0),
           child: Row(
             children: [

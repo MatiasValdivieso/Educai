@@ -1,30 +1,31 @@
 import 'dart:io';
+
 import 'package:dio/dio.dart';
-import 'package:get/get.dart';
-import 'package:just_audio/just_audio.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-import 'H5Plesson.dart';
-import 'singleZoom.dart';
-import '../services/LessonsAPI.dart';
-import '../../services/SharedPrefs.dart';
-import '../../widgets/VideoPlayers/LocalVideo.dart';
-import '../../widgets/VideoPlayers/youtube.dart';
 import '../../Controllers/TakeCourseController.dart';
+import '../../Models/Courses.dart';
+import '../../services/SharedPrefs.dart';
 import '../../utils/constants.dart';
 import '../../widgets/Button.dart';
 import '../../widgets/VideoPlayers/EmbeddedVideo.dart';
-import '../../Models/Courses.dart';
+import '../../widgets/VideoPlayers/LocalVideo.dart';
+import '../../widgets/VideoPlayers/youtube.dart';
 import '../Controllers/QuizController.dart';
 import '../services/CoursesAPI.dart';
+import '../services/LessonsAPI.dart';
 import '../widgets/pdfViewer.dart';
+import 'H5Plesson.dart';
+import 'singleZoom.dart';
 
 class TakeCourseScreen extends StatefulWidget {
   final Courses Course;
@@ -1050,7 +1051,6 @@ class _TakeCourseScreenState extends State<TakeCourseScreen>
         cancelToken: cancelToken,
         onReceiveProgress: (receivedBytes, totalBytes) {
           if (totalBytes != -1) {
-            
             downloadProgress[item.id] =
                 (receivedBytes / totalBytes * 100).toInt();
             downloadingIconMode.refresh();
